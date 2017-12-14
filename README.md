@@ -29,40 +29,38 @@ public interface MessageMapper {
 
 ## 使用教程
 
-1. 将`mybatis-generator-kecikeci.jar`放到资源文件目录`resources`下
+1. 将`mybatis-generator-kecikeci.jar`和`mysql-connector-java-5.1.42.jar`放到资源文件目录`resources`下
 
 2. `pom.xml`文件中配置插件
 
 ```
 <build>
-		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.5</version>
-				<dependencies>
-					<dependency>
-						<groupId>com.kecikeci</groupId>
-						<artifactId>mybatis-generator-kecikeci</artifactId>
-						<version>1.0</version>
-						<scope>system</scope>
-						<systemPath>${project.basedir}/src/main/resources/mybatis-generator-kecikeci.jar</systemPath>
-					</dependency>
-				</dependencies>
-			</plugin>
-		</plugins>
-	</build>
+    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+        <plugin>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-maven-plugin</artifactId>
+            <version>1.3.5</version>
+            <dependencies>
+                <dependency>
+                    <groupId>com.kecikeci</groupId>
+                    <artifactId>mybatis-generator-kecikeci</artifactId>
+                    <version>1.0</version>
+                    <scope>system</scope>
+                    <systemPath>${project.basedir}/src/main/resources/mybatis-generator-kecikeci.jar</systemPath>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+</build>
 ```
 
-3. 新建`generatorConfig.xml`配置
-
-需要引入mybatis包
+3. 新建`generatorConfig.xml`配置，需`pom.xml`中先引入`mybatis`的包
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -118,5 +116,15 @@ public interface MessageMapper {
 ```
 mybatis-generator:generate -e
 ```
+
+---
+
+源码已开源，基础代码是引用的别人的，致敬!我添加了selectListByMap和selectByMap，去除了些没用的代码。
+
+github地址:https://github.com/kecikeci/mybatis-generator-kecikeci
+
+gitee码云:https://gitee.com/kecikeci/mybatis-generator-kecikeci
+
+博客详细教程:https://4xx.me/archives/104.html
 
 如果觉得好用，请点星
